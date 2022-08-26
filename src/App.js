@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import { Provider } from "react-redux";
+import { store } from "./store";
+import styled from "styled-components";
+
+import Confirm from "./components/Confirm";
+import Keyboard from "./components/Keyboard";
+import Title from "./components/Title";
+import Word from "./components/GuessedWords";
+import WordList from "./components/WordList";
+import InputWord from "./components/InputWord";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Container>
+        <Title />
+        <Word />
+        <InputWord />
+        {/* <Keyboard /> */}
+        <Confirm />
+        <WordList />
+      </Container>
+    </Provider>
   );
 }
 
 export default App;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* border: 1px solid red; */
+  margin: auto;
+`;
